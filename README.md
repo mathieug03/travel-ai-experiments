@@ -2,7 +2,7 @@
 
 **Archived / abandoned research prototypes for a future travel-planning platform.**
 
-These experiments explored travel API integration, structured AI output, and rough transport/carbon comparisons. They never became a complete booking product. They are preserved as development work, with their limitations visible.
+Experiments in travel API integration, structured AI output, and approximate transport/carbon comparisons.
 
 ## Two separate approaches
 
@@ -11,7 +11,7 @@ These experiments explored travel API integration, structured AI output, and rou
 | `web-experiment/` | February 2026, Next.js / TypeScript / Mistral | Trip form, itinerary rendering, server-side generation request, and mock fallback |
 | `api-experiment/` | April 2026, Python / FastAPI / Gemini / Duffel | Structured travel intent, flight/stay search integration, chat tool calls, and approximate carbon comparison |
 
-The two directories are **not wired together**. The intended platform would have needed reliable inventory, validated prices, a coherent itinerary flow, and booking/payment handling. None of that is claimed complete here. This repository contains no purchase/payment endpoint.
+The two directories are separate experiments. Neither implements a complete booking or payment workflow.
 
 ## Inspect or run
 
@@ -23,11 +23,11 @@ npm ci
 npm run dev
 ```
 
-Open `http://localhost:3000`. Without configuration, generation returns fixed example content: activities, prices, and the sustainability score are **mock data**, not researched recommendations. To try the historical Mistral integration, copy `.env.example` to `.env.local` and supply your own key and agent ID. Remote API compatibility is not guaranteed.
+Open `http://localhost:3000`. Without configuration, activities, prices, and the sustainability score are **mock data**. To use the Mistral integration, copy `.env.example` to `.env.local` and supply your own key and agent ID. Provider API changes may require updates.
 
 ### API experiment
 
-Python 3.11+ was the intended environment. From `api-experiment/`:
+Use Python 3.11+. From `api-experiment/`:
 
 ```bash
 python -m venv .venv
@@ -37,9 +37,13 @@ cp .env.example .env
 uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 
-API schema: `http://127.0.0.1:8000/docs`. `/health` and `/api/carbon/compare` can be used without paid provider credentials. Chat and inventory integrations need your own configured provider access. No live API calls were made to prepare this archive.
+API schema: `http://127.0.0.1:8000/docs`. `/health` and `/api/carbon/compare` work without provider credentials. Chat and inventory integrations require your own provider access.
 
-`demo.ipynb` and `backend/test_services.py` are **manual integration explorations**, not a passing offline test suite. Running them can make remote requests. Notebook outputs have been removed. `tests/test_offline.py` checks local carbon behavior and flight-response parsing with a mocked HTTP client.
+`demo.ipynb` and `backend/test_services.py` are manual integration checks that can make remote requests. For offline checks of carbon estimates and flight-response parsing, run:
+
+```bash
+python -m unittest discover -s tests -v
+```
 
 ## What this explored
 
@@ -50,8 +54,6 @@ API schema: `http://127.0.0.1:8000/docs`. `/health` and `/api/carbon/compare` ca
 
 ## Limits
 
-Carbon figures use geodesic city-to-city distance and static factors, not measured route-specific emissions. Train/stay availability and pricing coverage are incomplete. A configuration field or dependency does not mean a database, Redis cache, or deployment was implemented. This is an archived local prototype without production authentication or rate limiting.
+Carbon estimates use geodesic city-to-city distance and static factors. Train/stay availability and pricing coverage are incomplete. These prototypes are intended for local use and lack production authentication and rate limiting.
 
-Built by Mathieu Gautier. This clean archive combines two historical experiments without publishing old environment files, credentials, cached responses, worktrees, or notebook output. Provider names refer to integrations and do not imply affiliation. Dependencies retain their own licenses.
-
-Archive maintenance: the web experiment's ESLint version/configuration was aligned with its existing Next.js version, and JSX quotation marks were escaped so its production build can be checked. The application flow is unchanged.
+Built by Mathieu Gautier.
