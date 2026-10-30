@@ -1,0 +1,21 @@
+# Web framework
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+pydantic-settings==2.7.1
+
+# LLM
+google-genai==1.10.0
+
+# APIs (Duffel via REST/httpx — Python SDK archived since Sep 2024)
+pyhafas==0.6.0
+
+# Database & Cache
+sqlalchemy==2.0.36
+asyncpg==0.30.0
+redis==5.2.1
+
+# Utilities
+httpx==0.28.1
+python-dotenv==1.0.1
+geopy==2.4.1

@@ -1,0 +1,39 @@
+{
+  "factors": {
+    "tgv_electric": {
+      "g_co2_per_km": 3.4,
+      "label": "TGV / ICE (électrique)",
+      "source": "ADEME 2023"
+    },
+    "train_electric": {
+      "g_co2_per_km": 5.3,
+      "label": "Train intercité (électrique)",
+      "source": "ADEME 2023"
+    },
+    "train_diesel": {
+      "g_co2_per_km": 29.0,
+      "label": "Train intercité (diesel)",
+      "source": "ADEME 2023"
+    },
+    "flight_short": {
+      "g_co2_per_km": 145.0,
+      "label": "Avion court-courrier (<1500 km)",
+      "source": "ADEME 2023"
+    },
+    "flight_medium": {
+      "g_co2_per_km": 118.0,
+      "label": "Avion moyen-courrier (1500-3500 km)",
+      "source": "ADEME 2023"
+    },
+    "bus": {
+      "g_co2_per_km": 26.0,
+      "label": "Bus longue distance",
+      "source": "ADEME 2023"
+    },
+    "car_solo": {
+      "g_co2_per_km": 115.0,
+      "label": "Voiture (1 personne)",
+      "source": "ADEME 2023"
+    }
+  }
+}
